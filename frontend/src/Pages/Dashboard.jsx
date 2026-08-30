@@ -15,6 +15,7 @@ import {
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
@@ -66,6 +67,7 @@ const Dashboard = () => {
     //   await axios.post("/api/auth/logout");
     // }
     localStorage.removeItem("token");
+    toast.success("Logout Successfully");
     navigate("/login", { replace: true });
   };
 

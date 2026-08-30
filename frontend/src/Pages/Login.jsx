@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 // axios.defaults.withCredentials = true;
 
@@ -31,15 +32,19 @@ export default function Login() {
       });
 
       if (res.data.msg === "Login success") {
+        toast.success("Login Successfully");
         localStorage.setItem("token", res.data.token);
         navigate("/dashboard", { replace: true });
+      } else {
+        toast.error("Login Failed");
       }
     } catch (err) {
       setError(
         err.response?.status === 401
           ? "Invalid email or password"
-          : "Server error. Try again."
+          : "Server error. Try again.",
       );
+      toast.error("Login Failed");
     }
   };
   // -------------------------------------------------------COOKIE---------------------------------------------------

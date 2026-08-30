@@ -3,6 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCity, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 /* ---------- Reusable Stat Card ---------- */
 const StatCard = ({ title, value, icon }) => (
   <div className="w-full sm:w-72 bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center">
@@ -82,7 +83,7 @@ const Home = () => {
 
       const res = await axios.delete(`/api/users/${id}`);
       // console.log(res);
-
+      toast.success("Employee Deleted Successfully");
       setShowResult(false);
       // getUsers();
     } catch (err) {
@@ -110,7 +111,7 @@ const Home = () => {
           <StatCard
             title="Total Salary"
             value={
-              stats.totalSalary !== null ? `$ ${stats.totalSalary}` : "$ 0"
+              stats.totalSalary !== null ? `₹ ${stats.totalSalary}` : "₹ 0"
             }
           />
         </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -21,6 +22,7 @@ export default function Register() {
         password,
       });
       if (res.status === 201) {
+        toast.success("Register Successfully");
         navigate("/login");
       }
     } catch (err) {

@@ -5,6 +5,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
 const Category = () => {
   const [category, setCategory] = useState("");
   useEffect(() => {
@@ -21,6 +22,7 @@ const Category = () => {
     console.log(id);
     try {
       await axios.delete(`/api/category/${id}`);
+      toast.success("Category Deleted Successfully");
       // Refetch all users
       getCategory();
     } catch (err) {

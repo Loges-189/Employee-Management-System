@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const AddCategory = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState("");
@@ -12,7 +13,7 @@ const AddCategory = () => {
       c_name: category,
     });
     // .then((res) => console.log(res.data));
-
+    toast.success("Category Added Successfully");
     setCategory("");
   };
   return (

@@ -8,25 +8,28 @@ import AddCategory from "./Pages/AddCategory";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+    <>
+      <Toaster />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<Home />} />
-          <Route path="employee" element={<ShowEmployee />} />
-          <Route path="addemployee" element={<EmployeeAdd />} />
-          <Route path="category" element={<Category />} />
-          <Route path="category/addcategory" element={<AddCategory />} />
-          <Route path="employee/edit/:id" element={<EditEmployee />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<Home />} />
+            <Route path="employee" element={<ShowEmployee />} />
+            <Route path="addemployee" element={<EmployeeAdd />} />
+            <Route path="category" element={<Category />} />
+            <Route path="category/addcategory" element={<AddCategory />} />
+            <Route path="employee/edit/:id" element={<EditEmployee />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 

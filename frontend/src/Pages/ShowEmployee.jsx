@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ShowEmployee = () => {
   const [users, setUsers] = useState([]);
@@ -22,6 +23,7 @@ const ShowEmployee = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`/api/users/${id}`);
+      toast.success("Employee Deleted Successfully");
       getUsers();
     } catch (err) {
       alert("Failed to delete user");

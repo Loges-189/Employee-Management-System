@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
+
 import "../App.css";
 const EmployeeForm = () => {
   const [employeeId, setEmployeeId] = useState("");
@@ -37,6 +39,7 @@ const EmployeeForm = () => {
         // setUsers((prev) => [...prev, res.data]);
         // console.log(res.data);
       });
+    toast.success("Employee Added Successfully");
     setEmployeeId("");
     setName("");
     setAge("");

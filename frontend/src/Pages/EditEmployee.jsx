@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 const EditEmployee = () => {
   const [employeeId, setEmployeeId] = useState("");
   const [name, setName] = useState("");
@@ -64,6 +64,7 @@ const EditEmployee = () => {
     setAge("");
     setCategory("");
     setSalary("");
+    toast.success("Employee Updated Successfully");
   };
 
   return (
