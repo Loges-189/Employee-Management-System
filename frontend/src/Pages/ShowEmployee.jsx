@@ -21,12 +21,14 @@ const ShowEmployee = () => {
   }
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/users/${id}`);
-      toast.success("Employee Deleted Successfully");
-      getUsers();
-    } catch (err) {
-      alert("Failed to delete user");
+    if (confirm("Are You Sure Want To Delete...")) {
+      try {
+        await axios.delete(`/api/users/${id}`);
+        toast.success("Employee Deleted Successfully");
+        getUsers();
+      } catch (err) {
+        alert("Failed to delete user");
+      }
     }
   };
 

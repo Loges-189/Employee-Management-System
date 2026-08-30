@@ -19,16 +19,18 @@ const Category = () => {
   }
 
   const handleDelete = async (id) => {
-    console.log(id);
-    try {
-      await axios.delete(`/api/category/${id}`);
-      toast.success("Category Deleted Successfully");
-      // Refetch all users
-      getCategory();
-    } catch (err) {
-      console.error(err);
-      alert("Failed to delete user");
+    if (confirm("Are You Sure Want To Delete...")) {
+      try {
+        await axios.delete(`/api/category/${id}`);
+        toast.success("Category Deleted Successfully");
+        // Refetch all users
+        getCategory();
+      } catch (err) {
+        console.error(err);
+        alert("Failed to delete user");
+      }
     }
+    // console.log(id);
   };
 
   return (
